@@ -25,7 +25,6 @@ public class Game extends ApplicationAdapter {
     public static final int SCREEN_HEIGHT = 480;
     public static final int ASTEROIDS_COUNT = 3;
 
-    private OrthographicCamera camera;
     private SpriteBatch batch;
     private Stage stage;
 
@@ -48,7 +47,6 @@ public class Game extends ApplicationAdapter {
         loadTextures();
         Animation explosionAnimation = createExplosionAnimation();
         batch = new SpriteBatch();
-        camera = createCamera();
         touchpad = createTouchpad();
         fireButton = createFireButton();
         ship = new Ship(shipTexture, explosionAnimation);
@@ -108,13 +106,6 @@ public class Game extends ApplicationAdapter {
             asteroids.add(new Asteroid(asteroidTexture, 0, 0, 1f));
         }
         return asteroids;
-    }
-
-    private OrthographicCamera createCamera() {
-        float aspectRatio = (float) SCREEN_WIDTH / SCREEN_HEIGHT;
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, 10f * aspectRatio, 10f);
-        return camera;
     }
 
     private Touchpad createTouchpad() {
